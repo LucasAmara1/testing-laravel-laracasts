@@ -14,8 +14,15 @@ class ExampleTest extends TestCase
      */
     public function test_example()
     {
-        $response = $this->get('/');
+        // 1. Visit the home page
+        $this->visit('/');
+        // 2. Press a "Click Me" link
+        $this->click('Laracasts');
 
-        $response->assertStatus(200);
+        // 3. See "god"
+        $this->see('god');
+
+        // 4. Assert that the current url is /feedback
+        $this->seePageIs('/feedback');
     }
 }
