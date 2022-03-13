@@ -35,6 +35,19 @@ services:
     networks:
       - laravel
 
+  mysqltest:
+    image: mysql:8
+    container_name: testing-laravel-db-test
+    environment:
+        MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+        MYSQL_DATABASE: ${TEST_DB_DATABASE}
+        # MYSQL_USER: ${DB_USERNAME}
+        # MYSQL_PASSWORD: ${DB_PASSWORD}
+    ports:
+      - "3307:3307"
+    networks:
+      - laravel
+
   phpmyadmin:
     image: phpmyadmin
     container_name: testing-laravel-phpmyadmin
