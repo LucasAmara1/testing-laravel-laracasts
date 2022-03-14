@@ -19,6 +19,7 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
+        'team_id',
         'email',
         'password',
     ];
@@ -41,4 +42,12 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function leaveTeam()
+    {
+        $this->team_id = null;
+        $this->save();
+
+        return $this;
+    }
 }
